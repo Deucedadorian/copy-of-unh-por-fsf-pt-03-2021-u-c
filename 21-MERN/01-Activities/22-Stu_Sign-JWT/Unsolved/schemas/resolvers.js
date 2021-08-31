@@ -21,17 +21,17 @@ const resolvers = {
 
   Mutation: {
     // TODO: Add comments to each line of code below to describe the functionality below
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
+    addUser: async (parent, args) => { // addUser mutation function passing in params
+      const user = await User.create(args); // assign const user = to creating a new user object using User class and passing in args
+      const token = signToken(user); // assigning token a value = to signToken func and passing in user
 
-      return { token, user };
+      return { token, user }; // returning the two variables
     },
     // TODO: Add comments to each line of code below to describe the functionality below
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { email, password }) => { // defining login func and passing in email and password variables
+      const user = await User.findOne({ email }); // assigning user a value = to async call of find a User obj with params of the user email
 
-      if (!user) {
+      if (!user) { //
         throw new AuthenticationError('Incorrect credentials');
       }
 
