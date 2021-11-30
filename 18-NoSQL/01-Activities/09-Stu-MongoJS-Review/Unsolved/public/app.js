@@ -48,6 +48,7 @@ $(document).on("click", ".markunread", function() {
 function getUnread() {
   $("#unread").empty();
   $.getJSON("/unread", function(data) {
+    // console.log(data);
     for (var i = 0; i < data.length; i++) {
       $("#unread").prepend("<tr><td>" + data[i].title + "</td><td>" + data[i].author +
         "</td><td><button class='markread' data-id='" + data[i]._id + "'>Mark Read</button></td></tr>");
